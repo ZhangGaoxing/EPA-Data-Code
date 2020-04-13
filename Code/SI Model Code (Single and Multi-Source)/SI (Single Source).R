@@ -2,7 +2,7 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./EPA-Data-Code/Graphs/Facebook.RData")
+load(file="./Graphs/Facebook.RData")
 
 #Code to simulate infection over a graph using SI model.
 
@@ -111,4 +111,4 @@ while(1)
 			}		
 }
 }
-#save(Facebook_Hetero_2, file="./EPA-Data-Code/Infection Graphs (Single Source)/Facebook_Hetero_2.RData")
+#save(Facebook_Hetero_2, file="./Infection Graphs (Single Source)/Facebook_Hetero_2.RData")

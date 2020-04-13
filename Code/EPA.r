@@ -33,8 +33,8 @@ score<-function(Du1,Di,l,level,temp){
 
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file="./EPA-Data-Code/Graphs/Facebook.RData")
-load(file="./EPA-Data-Code/Infection Graphs (Single Source)/Facebook_Hetero_2.RData") 
+load(file="./Graphs/Facebook.RData")
+load(file="./Infection Graphs (Single Source)/Facebook_Hetero_2.RData") 
 #Facebook_Hetero_2 contains infected nodes list corresponding to the underlying graph, which in this case is Facebook. 
 #Replace Facebook_Hetero_2 in the rest of the code according to the graph and infection size. For example if the 
 #underlying graph is Regular and infection size is 40-60%, replace it with Regular_Hetero_40.
@@ -77,7 +77,7 @@ while(i<=100){
 	est_sum=est_sum+as.numeric(d[1])
 	EPA_FB_Ht_2[[i]]=as.numeric(d[1])
 	#if(i%%5==0){
-		#save(EPA_FB_Ht_2, file="./EPA-Data-Code/Result Objects/EPA_FB_Ht_2.RData")
+		#save(EPA_FB_Ht_2, file="./Result Objects/EPA_FB_Ht_2.RData")
 	
 	#}
 

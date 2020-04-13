@@ -1,7 +1,7 @@
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file="./EPA-Data-Code/Graphs/Facebook.RData")
-load(file="./EPA-Data-Code/Infection Graphs (Single Source)/Facebook_Hetero_2.RData") 
+load(file="./Graphs/Facebook.RData")
+load(file="./Infection Graphs (Single Source)/Facebook_Hetero_2.RData") 
 #Facebook_Hetero_2 contains infected nodes list corresponding to the underlying graph, which in this case is Facebook. 
 #Replace Facebook_Hetero_2 in the rest of the code according to the graph and infection size. For example if the 
 #underlying graph is Regular and infection size is 40-60%, replace it with Regular_Hetero_40.
@@ -71,7 +71,7 @@ index=which(max(clo)==clo)
 	JC_sum=JC_sum+as.numeric(d_JC[1])
 	RI_FB_Ht_2[[i]]=d_JC
 	if(i%%5==0){
-		#save(RI_FB_Ht_2, file="./EPA-Data-Code/Result Objects/RI_FB_Ht_2.RData")
+		#save(RI_FB_Ht_2, file="./Result Objects/RI_FB_Ht_2.RData")
 	}
 	i=i+1
 }

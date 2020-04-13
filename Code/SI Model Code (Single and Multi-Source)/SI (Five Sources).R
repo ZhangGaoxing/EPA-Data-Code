@@ -2,7 +2,7 @@
 library(igraph)
 
 
-load(file="./EPA-Data-Code/Graphs/Jazz.RData")
+load(file="./Graphs/Jazz.RData")
 
 
 
@@ -107,7 +107,7 @@ while(1)
 				Jazz_Hetero_10_5S[[length(Jazz_Hetero_10_5S)+1]]=unlist(perm_active)
 				print(unlist(length(perm_active)))	
 			#}	
-			#save(Jazz_Hetero_10_5S, file="./EPA-Data-Code/Infection Graphs (Multiple Source)/5/Jazz_Hetero_10_5S.RData")
+			#save(Jazz_Hetero_10_5S, file="./Infection Graphs (Multiple Source)/5/Jazz_Hetero_10_5S.RData")
 
 				k=k+1
 				break

@@ -1,7 +1,7 @@
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file="./EPA-Data-Code/Graphs/Jazz.RData")
-load(file="./EPA-Data-Code/Infection Graphs (Multiple Source)/2/Jazz_Hetero_10_2S.RData") 
+load(file="./Graphs/Jazz.RData")
+load(file="./Infection Graphs (Multiple Source)/2/Jazz_Hetero_10_2S.RData") 
 #Jazz_Hetero_10_2S contains infected nodes list corresponding to the underlying graph, which in this case is Jazz. 
 
 library(igraph)
@@ -99,9 +99,9 @@ dr=length(intersect(as.character(sources),as.character(seeds)))/length(sources)
 print(dr)
 print("_______________")
 DC_Jazz_Ht_10_2S_DR[[i]]=dr
-save(DC_Jazz_Ht_10_2S_DR, file="./EPA-Data-Code/Result Objects/DC_Jazz_Ht_10_2S_DR.RData")
+save(DC_Jazz_Ht_10_2S_DR, file="./Result Objects/DC_Jazz_Ht_10_2S_DR.RData")
 
 DC_Jazz_Ht_10_2S_AED[[i]]=outer_sum
-save(DC_Jazz_Ht_10_2S_AED, file="./EPA-Data-Code/Result Objects/DC_Jazz_Ht_10_2S_AED.RData")
+save(DC_Jazz_Ht_10_2S_AED, file="./Result Objects/DC_Jazz_Ht_10_2S_AED.RData")
 	i=i+1	
 }

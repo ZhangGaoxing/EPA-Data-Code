@@ -32,8 +32,8 @@ score<-function(Du1,Di,l,level,temp){
 }
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file="./EPA-Data-Code/Graphs/Jazz.RData")
-load(file="./EPA-Data-Code/Infection Graphs (Multiple Source)/2/Jazz_Hetero_10_2S.RData") 
+load(file="./Graphs/Jazz.RData")
+load(file="./Infection Graphs (Multiple Source)/2/Jazz_Hetero_10_2S.RData") 
 #Jazz_Hetero_10_2S contains infected nodes list corresponding to the underlying graph, which in this case is Jazz. 
 
 library(igraph)
@@ -130,10 +130,10 @@ dr=length(intersect(as.character(sources),as.character(seeds)))/length(sources)
 print(dr)
 print("_______________")
 EPA_SSI_Jazz_Ht_10_2S_DR[[i]]=dr
-save(EPA_SSI_Jazz_Ht_10_2S_DR, file="./EPA-Data-Code/Result Objects/EPA_SSI_Jazz_Ht_10_2S_DR.RData")
+save(EPA_SSI_Jazz_Ht_10_2S_DR, file="./Result Objects/EPA_SSI_Jazz_Ht_10_2S_DR.RData")
 
 EPA_SSI_Jazz_Ht_10_2S_AED[[i]]=outer_sum
-save(EPA_SSI_Jazz_Ht_10_2S_AED, file="./EPA-Data-Code/Result Objects/EPA_SSI_Jazz_Ht_10_2S_AED.RData")
+save(EPA_SSI_Jazz_Ht_10_2S_AED, file="./Result Objects/EPA_SSI_Jazz_Ht_10_2S_AED.RData")
 	i=i+1
 	
 }
