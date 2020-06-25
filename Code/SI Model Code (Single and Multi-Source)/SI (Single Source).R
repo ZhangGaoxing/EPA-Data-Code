@@ -2,11 +2,12 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Facebook.RData")
+load(file="./Graphs/USPG.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Facebook_Hetero_2=list() #Replace Facebook_Hetero_2 depending on graph and infection size
+USPG_Hetero_40=list() #Replace Facebook_Hetero_2 depending on graph and infection size
+USPG_Hetero_40_Time=list()
 
 k=1
 while(k<=100){ #Generate 100 infection graphs
@@ -20,6 +21,9 @@ perm_active=list()
 temp=list()
 adj=list()
 perm_active=random
+time=list()
+tt=0
+time=tt
 
 while(1)
 {
@@ -43,6 +47,8 @@ while(1)
 	#print(rel_neighbors)
 	temp=perm_active
 	#temp_active=list()
+	tt=tt+1
+	#ttt=0
 	for(inactive in rel_neighbors)
 	{	
 		count=0
@@ -83,19 +89,22 @@ while(1)
 
 			prob=unlist(edge_list)
 		}
+
+		#ttt=ttt+1
 		if(prob>runif(n=1, min=0, max=1))
 		{
+			time[length(unlist(perm_active))+1]=tt#as.numeric(paste(tt,ttt,sep="."))
 			perm_active[length(unlist(perm_active))+1]=(inactive)
-			
 			
 			#print(unlist(perm_active))				
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.02) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.4) #Set infection size
 			{
-				if(length(unlist(perm_active))<=length(V(graph))*0.05){
-				Facebook_Hetero_2[[length(Facebook_Hetero_2)+1]]=unlist(perm_active)
+				if(length(unlist(perm_active))<=length(V(graph))*0.42){
+				USPG_Hetero_40[[length(USPG_Hetero_40)+1]]=unlist(perm_active)
+				USPG_Hetero_40_Time[[length(USPG_Hetero_40_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -111,4 +120,6 @@ while(1)
 			}		
 }
 }
-#save(Facebook_Hetero_2, file="./Infection Graphs (Single Source)/Facebook_Hetero_2.RData")
+
+save(USPG_Hetero_40, file="./My Infection Graphs (Single Source)/USPG_Hetero_40.RData")
+save(USPG_Hetero_40_Time, file="./My Infection Graphs (Single Source)/USPG_Hetero_40_Time.RData")

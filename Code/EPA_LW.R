@@ -35,8 +35,8 @@ score<-function(Du1,Di,l,level,temp){
 
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file="./Graphs/Facebook.RData")
-load(file="./Infection Graphs (Single Source)/Facebook_Hetero_2.RData") 
+load(file="./Graphs/USPG.RData")
+load(file="./Infection Graphs (Single Source)/USPG_Hetero_2.RData") 
 #Facebook_Hetero_2 contains infected nodes list corresponding to the underlying graph, which in this case is Facebook. 
 #Replace Facebook_Hetero_2 in the rest of the code according to the graph and infection size. For example if the 
 #underlying graph is Regular and infection size is 40-60%, replace it with Regular_Hetero_40.
@@ -57,8 +57,8 @@ est_sum=0
 EPA_LW_FB_Ht_2=list()
 i=1
 while(i<=100){
-	source=V(graph)[Facebook_Hetero_2[[i]][1]]$name
-	sg=induced_subgraph(graph, Facebook_Hetero_2[[i]], impl = c("copy_and_delete"))
+	source=V(graph)[USPG_Hetero_2[[i]][1]]$name
+	sg=induced_subgraph(graph, USPG_Hetero_2[[i]], impl = c("copy_and_delete"))
 	radius=radius(sg)
 	nnodes<<-length(V(sg))
 	Ai<<-as.matrix(get.adjacency(sg))

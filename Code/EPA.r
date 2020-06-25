@@ -32,8 +32,8 @@ score <- function (Du1, Di, l, level, temp) {
 
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file = "./Graphs/Facebook.RData")
-load(file = "./Infection Graphs (Single Source)/Facebook_Hetero_2.RData")
+load(file = "./Graphs/USPG.RData")
+load(file = "./Infection Graphs (Single Source)/USPG_Hetero_2.RData")
 #Facebook_Hetero_2 contains infected nodes list corresponding to the underlying graph, which in this case is Facebook. 
 #Replace Facebook_Hetero_2 in the rest of the code according to the graph and infection size. For example if the 
 #underlying graph is Regular and infection size is 40-60%, replace it with Regular_Hetero_40.
@@ -51,8 +51,8 @@ est_sum <- 0
 EPA_FB_Ht_2 <- list()
 i <- 1
 while (i <= 100) {
-    source <- V(graph)[Facebook_Hetero_2[[i]][1]]$name      #感染图的第一个节点为源
-    sg <- induced_subgraph(graph, Facebook_Hetero_2[[i]], impl = c("copy_and_delete"))        #感染图的子图
+    source <- V(graph)[USPG_Hetero_2[[i]][1]]$name      #感染图的第一个节点为源
+    sg <- induced_subgraph(graph, USPG_Hetero_2[[i]], impl = c("copy_and_delete"))        #感染图的子图
     radius <- radius(sg)        #感染子图的半径
     nnodes <<- length(V(sg))        #子图的节点数量
     Ai <<- as.matrix(get.adjacency(sg))        #子图的邻接矩阵
@@ -66,7 +66,7 @@ while (i <= 100) {
         scr <- score(Du1, Di, as.character(node), level, temp)        #节点年龄
         penalty <- as.numeric(eccentricity(sg, vids = node, mode = c("all")))        #penalty年龄
         scr_list[k] <- scr / penalty        #最终的评价参数
-        k <- k+1
+        k <- k + 1
     }
     scr_list <- unlist(scr_list)        #list转向量
     index <- which(max(scr_list) == scr_list)
