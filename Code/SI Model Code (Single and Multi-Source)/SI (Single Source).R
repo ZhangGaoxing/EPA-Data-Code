@@ -10,7 +10,7 @@ USPG_Hetero_40=list() #Replace Facebook_Hetero_2 depending on graph and infectio
 USPG_Hetero_40_Time=list()
 
 k=1
-while(k<=100){ #Generate 100 infection graphs
+while(k<=200){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -121,5 +121,5 @@ while(1)
 }
 }
 
-save(USPG_Hetero_40, file="./My Infection Graphs (Single Source)/USPG_Hetero_40.RData")
-save(USPG_Hetero_40_Time, file="./My Infection Graphs (Single Source)/USPG_Hetero_40_Time.RData")
+save(USPG_Hetero_40, file="./200/USPG_Hetero_40.RData")
+save(USPG_Hetero_40_Time, file="./200/USPG_Hetero_40_Time.RData")
