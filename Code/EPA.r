@@ -32,10 +32,10 @@ score <- function (Du1, Di, l, level, temp) {
 
 #Give paths to input underlying graphs and infection graphs
 #Set the working directory
-load(file = "./Graphs/USPG.RData")
-load(file = "./Infection Graphs (Single Source)/USPG_Hetero_2.RData")
-#Facebook_Hetero_2 contains infected nodes list corresponding to the underlying graph, which in this case is Facebook. 
-#Replace Facebook_Hetero_2 in the rest of the code according to the graph and infection size. For example if the 
+load(file = "./Graphs/Facebook.RData")
+load(file = "./200/Facebook_Hetero_20.RData")
+#Facebook_Hetero_20 contains infected nodes list corresponding to the underlying graph, which in this case is Facebook. 
+#Replace Facebook_Hetero_20 in the rest of the code according to the graph and infection size. For example if the 
 #underlying graph is Regular and infection size is 40-60%, replace it with Regular_Hetero_40.
 
 library(igraph)
@@ -46,13 +46,14 @@ Du <- diag(rowSums(Au))        #根据邻接矩阵的行和生成对角阵，图
 rownames(Du) <- as.character(V(graph)$name)        #顶点名称
 colnames(Du) <- as.character(V(graph)$name)
 
+res_distances <- vector(mode = "numeric", length = 0)
 sys <- 0
 est_sum <- 0
 EPA_FB_Ht_2 <- list()
 i <- 1
 while (i <= 100) {
-    source <- V(graph)[USPG_Hetero_2[[i]][1]]$name      #感染图的第一个节点为源
-    sg <- induced_subgraph(graph, USPG_Hetero_2[[i]], impl = c("copy_and_delete"))        #感染图的子图
+    source <- V(graph)[Facebook_Hetero_20[[i]][1]]$name      #感染图的第一个节点为源
+    sg <- induced_subgraph(graph, Facebook_Hetero_20[[i]], impl = c("copy_and_delete"))        #感染图的子图
     radius <- radius(sg)        #感染子图的半径
     nnodes <<- length(V(sg))        #子图的节点数量
     Ai <<- as.matrix(get.adjacency(sg))        #子图的邻接矩阵
@@ -77,6 +78,7 @@ while (i <= 100) {
     #     save(EPA_FB_Ht_2, file = "./Result Objects/EPA_FB_Ht_2.RData")
     # }
 
+    res_distances[length(res_distances) + 1] <- d
     cat(sprintf("Current index: %d\n", i))
     cat(sprintf("Source distance: %d\n", d))
     cat("\n")
