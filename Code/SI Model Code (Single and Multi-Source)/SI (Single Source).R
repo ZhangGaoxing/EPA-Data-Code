@@ -121,5 +121,5 @@ while(1)
 }
 }
 
-save(Facebook_Hetero_20, file="./200_t/Facebook_Hetero_20.RData")
-save(Facebook_Hetero_20_Time, file="./200_t/Facebook_Hetero_20_Time.RData")
+save(Facebook_Hetero_20, file="./200_t/Facebook_Hetero_20.1.RData")
+save(Facebook_Hetero_20_Time, file="./200_t/Facebook_Hetero_20_Time.1.RData")
