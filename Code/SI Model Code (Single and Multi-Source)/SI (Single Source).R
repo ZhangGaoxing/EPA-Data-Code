@@ -6,11 +6,11 @@ load(file="./Graphs/Facebook.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Facebook_Hetero_5=list() #Replace Facebook_Hetero_2 depending on graph and infection size
-Facebook_Hetero_5_Time=list()
+Facebook_Hetero_20=list() #Replace Facebook_Hetero_2 depending on graph and infection size
+Facebook_Hetero_20_Time=list()
 
 k=1
-while(k<=200){ #Generate 100 infection graphs
+while(k<=50){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -100,11 +100,11 @@ while(1)
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.05) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.2) #Set infection size
 			{
-				if(length(unlist(perm_active))<=length(V(graph))*0.1){
-				Facebook_Hetero_5[[length(Facebook_Hetero_5)+1]]=unlist(perm_active)
-				Facebook_Hetero_5_Time[[length(Facebook_Hetero_5_Time)+1]]=unlist(time)
+				if(length(unlist(perm_active))<=length(V(graph))*0.24){
+				Facebook_Hetero_20[[length(Facebook_Hetero_20)+1]]=unlist(perm_active)
+				Facebook_Hetero_20_Time[[length(Facebook_Hetero_20_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -121,5 +121,5 @@ while(1)
 }
 }
 
-save(Facebook_Hetero_5, file="./200_t/Facebook_Hetero_5.RData")
-save(Facebook_Hetero_5_Time, file="./200_t/Facebook_Hetero_5_Time.RData")
+save(Facebook_Hetero_20, file="./200_t/Facebook_Hetero_20.RData")
+save(Facebook_Hetero_20_Time, file="./200_t/Facebook_Hetero_20_Time.RData")
