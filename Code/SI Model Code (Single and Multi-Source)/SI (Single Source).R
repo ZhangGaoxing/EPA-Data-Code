@@ -2,15 +2,15 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Facebook.RData")
+load(file="./Graphs/Random.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Facebook_Hetero_20=list() #Replace Facebook_Hetero_2 depending on graph and infection size
-Facebook_Hetero_20_Time=list()
+Random_Hetero_60=list() #Replace Random_Hetero_2 depending on graph and infection size
+Random_Hetero_60_Time=list()
 
 k=1
-while(k<=50){ #Generate 100 infection graphs
+while(k<=200){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -100,26 +100,31 @@ while(1)
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.2) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.6) #Set infection size
 			{
-				if(length(unlist(perm_active))<=length(V(graph))*0.24){
-				Facebook_Hetero_20[[length(Facebook_Hetero_20)+1]]=unlist(perm_active)
-				Facebook_Hetero_20_Time[[length(Facebook_Hetero_20_Time)+1]]=unlist(time)
+				Random_Hetero_60[[length(Random_Hetero_60)+1]]=unlist(perm_active)
+				Random_Hetero_60_Time[[length(Random_Hetero_60_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
-			}
-			else{
+			# 	if(length(unlist(perm_active))<=length(V(graph))*0.24){
+			# 	Random_Hetero_60[[length(Random_Hetero_60)+1]]=unlist(perm_active)
+			# 	Random_Hetero_60_Time[[length(Random_Hetero_60_Time)+1]]=unlist(time)
+			# 	print(unlist(perm_active))	
+			# 	k=k+1
+			# 	break
+			# }
+			# else{
 				
-				print(length(unlist(perm_active)))
-				print("discarded")
-				break
-			}
+			# 	print(length(unlist(perm_active)))
+			# 	print("discarded")
+			# 	break
+			# }
 
 			
 			}		
 }
 }
 
-save(Facebook_Hetero_20, file="./200_t/Facebook_Hetero_20.1.RData")
-save(Facebook_Hetero_20_Time, file="./200_t/Facebook_Hetero_20_Time.1.RData")
+save(Random_Hetero_60, file="./200_t/Random_Hetero_60.RData")
+save(Random_Hetero_60_Time, file="./200_t/Random_Hetero_60_Time.RData")

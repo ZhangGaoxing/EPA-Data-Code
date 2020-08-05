@@ -2,12 +2,12 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Facebook.RData")
+load(file="./Graphs/Regular.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Facebook_Hetero_80=list() #Replace Facebook_Hetero_2 depending on graph and infection size
-Facebook_Hetero_80_Time=list()
+Regular_Hetero_60=list() #Replace Regular_Hetero_2 depending on graph and infection size
+Regular_Hetero_60_Time=list()
 
 k=1
 while(k<=50){ #Generate 100 infection graphs
@@ -100,16 +100,42 @@ while(1)
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.8) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.6) #Set infection size
 			{
-				Facebook_Hetero_80[[length(Facebook_Hetero_80)+1]]=unlist(perm_active)
-				Facebook_Hetero_80_Time[[length(Facebook_Hetero_80_Time)+1]]=unlist(time)
+				Regular_Hetero_60[[length(Regular_Hetero_60)+1]]=unlist(perm_active)
+				Regular_Hetero_60_Time[[length(Regular_Hetero_60_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
+			# 	if(length(unlist(perm_active))<=length(V(graph))*0.24){
+			# 	Regular_Hetero_60[[length(Regular_Hetero_60)+1]]=unlist(perm_active)
+			# 	Regular_Hetero_60_Time[[length(Regular_Hetero_60_Time)+1]]=unlist(time)
+			# 	print(unlist(perm_active))	
+			# 	k=k+1
+			# 	break
+			# }
+			# else{
+				
+			# 	print(length(unlist(perm_active)))
+			# 	print("discarded")
+			# 	break
+			# }
+
+			
 			}		
 }
 }
 
-save(Facebook_Hetero_80, file="./200_t/Facebook_Hetero_80.RData")
-save(Facebook_Hetero_80_Time, file="./200_t/Facebook_Hetero_80_Time.RData")
+save(Regular_Hetero_60, file="./200_t/Regular_Hetero_60.RData")
+save(Regular_Hetero_60_Time, file="./200_t/Regular_Hetero_60_Time.RData")
+
+r <- Regular_Hetero_60
+t <- Regular_Hetero_60_Time
+
+load("./200_t/Regular_Hetero_60.RData")
+load("./200_t/Regular_Hetero_60_Time.RData")
+
+Regular_Hetero_60 <- c(Regular_Hetero_60, r)
+Regular_Hetero_60_Time <- c(Regular_Hetero_60_Time, t)
+
+length(Regular_Hetero_60)
