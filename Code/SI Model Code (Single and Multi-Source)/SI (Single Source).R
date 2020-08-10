@@ -10,7 +10,7 @@ Random_Hetero_60=list() #Replace Random_Hetero_2 depending on graph and infectio
 Random_Hetero_60_Time=list()
 
 k=1
-while(k<=200){ #Generate 100 infection graphs
+while(k<=50){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -126,5 +126,16 @@ while(1)
 }
 }
 
-save(Random_Hetero_60, file="./200_t/Random_Hetero_60.RData")
-save(Random_Hetero_60_Time, file="./200_t/Random_Hetero_60_Time.RData")
+save(Random_Hetero_60, file="./200_t/Random_Hetero_60.50.RData")
+save(Random_Hetero_60_Time, file="./200_t/Random_Hetero_60_Time.50.RData")
+
+# load("./200_t/Facebook_Hetero_60.3.RData")
+# load("./200_t/Facebook_Hetero_60_Time.3.RData")
+# f3 <- Facebook_Hetero_60
+# t3 <- Facebook_Hetero_60_Time
+
+# Facebook_Hetero_60 <- c(f1,f2,f3)
+# Facebook_Hetero_60_Time <- c(t1,t2,t3)
+
+# save(Facebook_Hetero_60, file="./200_t/Facebook_Hetero_60.RData")
+# save(Facebook_Hetero_60_Time, file="./200_t/Facebook_Hetero_60_Time.RData")
