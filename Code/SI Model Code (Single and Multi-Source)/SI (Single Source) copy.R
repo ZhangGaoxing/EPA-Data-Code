@@ -6,11 +6,11 @@ load(file="./Graphs/Regular.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Regular_Hetero_60=list() #Replace Regular_Hetero_2 depending on graph and infection size
-Regular_Hetero_60_Time=list()
+Regular_Hetero_30=list() #Replace Regular_Hetero_2 depending on graph and infection size
+Regular_Hetero_30_Time=list()
 
 k=1
-while(k<=50){ #Generate 100 infection graphs
+while(k<=200){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -100,42 +100,37 @@ while(1)
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.6) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
 			{
-				Regular_Hetero_60[[length(Regular_Hetero_60)+1]]=unlist(perm_active)
-				Regular_Hetero_60_Time[[length(Regular_Hetero_60_Time)+1]]=unlist(time)
+				if(length(unlist(perm_active))<=length(V(graph))*0.4){
+				Regular_Hetero_30[[length(Regular_Hetero_30)+1]]=unlist(perm_active)
+				Regular_Hetero_30_Time[[length(Regular_Hetero_30_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
-			# 	if(length(unlist(perm_active))<=length(V(graph))*0.24){
-			# 	Regular_Hetero_60[[length(Regular_Hetero_60)+1]]=unlist(perm_active)
-			# 	Regular_Hetero_60_Time[[length(Regular_Hetero_60_Time)+1]]=unlist(time)
-			# 	print(unlist(perm_active))	
-			# 	k=k+1
-			# 	break
-			# }
-			# else{
+			}
+			else{
 				
-			# 	print(length(unlist(perm_active)))
-			# 	print("discarded")
-			# 	break
-			# }
+				print(length(unlist(perm_active)))
+				print("discarded")
+				break
+			}
 
 			
 			}		
 }
 }
 
-save(Regular_Hetero_60, file="./200_t/Regular_Hetero_60.RData")
-save(Regular_Hetero_60_Time, file="./200_t/Regular_Hetero_60_Time.RData")
+save(Regular_Hetero_30, file="./200_t/Regular_Hetero_30.RData")
+save(Regular_Hetero_30_Time, file="./200_t/Regular_Hetero_30_Time.RData")
 
-r <- Regular_Hetero_60
-t <- Regular_Hetero_60_Time
+# r <- Regular_Hetero_30
+# t <- Regular_Hetero_30_Time
 
-load("./200_t/Regular_Hetero_60.RData")
-load("./200_t/Regular_Hetero_60_Time.RData")
+# load("./200_t/Regular_Hetero_30.RData")
+# load("./200_t/Regular_Hetero_30_Time.RData")
 
-Regular_Hetero_60 <- c(Regular_Hetero_60, r)
-Regular_Hetero_60_Time <- c(Regular_Hetero_60_Time, t)
+# Regular_Hetero_30 <- c(Regular_Hetero_30, r)
+# Regular_Hetero_30_Time <- c(Regular_Hetero_30_Time, t)
 
-length(Regular_Hetero_60)
+# length(Regular_Hetero_30)
