@@ -1,13 +1,14 @@
+# 无权重
 library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Regular.RData")
+load(file="./Graphs/Yeast.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Regular_Hetero_30=list() #Replace Regular_Hetero_2 depending on graph and infection size
-Regular_Hetero_30_Time=list()
+Yeast_Hetero_30=list() #Replace Yeast_Hetero_2 depending on graph and infection size
+Yeast_Hetero_30_Time=list()
 
 k=1
 while(k<=200){ #Generate 100 infection graphs
@@ -60,10 +61,7 @@ while(1)
 			if(are.connected(graph,(inactive),(active)))
 			{
 				count=count+1
-			#	print("c")
-				#print(count)
-				e=get.edge.ids(graph, c((inactive),(active)))
-				edge_list[length(unlist(edge_list))+1]=E(graph)[e]$weight
+				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0.5, max=1)
 
 				#print(unlist(edge_list))
 				#print(active)
@@ -103,8 +101,8 @@ while(1)
 	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
 			{
 				if(length(unlist(perm_active))<=length(V(graph))*0.4){
-				Regular_Hetero_30[[length(Regular_Hetero_30)+1]]=unlist(perm_active)
-				Regular_Hetero_30_Time[[length(Regular_Hetero_30_Time)+1]]=unlist(time)
+				Yeast_Hetero_30[[length(Yeast_Hetero_30)+1]]=unlist(perm_active)
+				Yeast_Hetero_30_Time[[length(Yeast_Hetero_30_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -121,16 +119,16 @@ while(1)
 }
 }
 
-save(Regular_Hetero_30, file="./200_t/Regular_Hetero_30.RData")
-save(Regular_Hetero_30_Time, file="./200_t/Regular_Hetero_30_Time.RData")
+save(Yeast_Hetero_30, file="./200_t/Yeast_Hetero_30.RData")
+save(Yeast_Hetero_30_Time, file="./200_t/Yeast_Hetero_30_Time.RData")
 
-# r <- Regular_Hetero_30
-# t <- Regular_Hetero_30_Time
+# r <- Yeast_Hetero_30
+# t <- Yeast_Hetero_30_Time
 
-# load("./200_t/Regular_Hetero_30.RData")
-# load("./200_t/Regular_Hetero_30_Time.RData")
+# load("./200_t/Yeast_Hetero_30.RData")
+# load("./200_t/Yeast_Hetero_30_Time.RData")
 
-# Regular_Hetero_30 <- c(Regular_Hetero_30, r)
-# Regular_Hetero_30_Time <- c(Regular_Hetero_30_Time, t)
+# Yeast_Hetero_30 <- c(Yeast_Hetero_30, r)
+# Yeast_Hetero_30_Time <- c(Yeast_Hetero_30_Time, t)
 
-# length(Regular_Hetero_30)
+# length(Yeast_Hetero_30)
