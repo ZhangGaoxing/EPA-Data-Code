@@ -61,7 +61,7 @@ while(1)
 			if(are.connected(graph,(inactive),(active)))
 			{
 				count=count+1
-				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0.5, max=1)
+				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0.1, max=0.35)
 
 				#print(unlist(edge_list))
 				#print(active)

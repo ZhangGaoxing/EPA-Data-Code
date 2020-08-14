@@ -2,17 +2,17 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Random.RData")
+load(file="./Graphs/Facebook.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Random_Hetero_30=list() #Replace Random_Hetero_2 depending on graph and infection size
-Random_Hetero_30_Time=list()
+Facebook_Hetero_30=list() #Replace Facebook_Hetero_2 depending on graph and infection size
+Facebook_Hetero_30_Time=list()
 
 k=1
-while(k<=200){ #Generate 100 infection graphs
+while(k<=50){ #Generate 100 infection graphs
 	print(k)
-random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
+random=as.numeric(c((sample(V(graph))[1]))) #Facebookly pick one source
 
 t=0
 neighbors=list()
@@ -103,8 +103,8 @@ while(1)
 	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
 			{
 				if(length(unlist(perm_active))<=length(V(graph))*0.4){
-				Random_Hetero_30[[length(Random_Hetero_30)+1]]=unlist(perm_active)
-				Random_Hetero_30_Time[[length(Random_Hetero_30_Time)+1]]=unlist(time)
+				Facebook_Hetero_30[[length(Facebook_Hetero_30)+1]]=unlist(perm_active)
+				Facebook_Hetero_30_Time[[length(Facebook_Hetero_30_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -121,8 +121,8 @@ while(1)
 }
 }
 
-save(Random_Hetero_30, file="./200_t/Random_Hetero_30.RData")
-save(Random_Hetero_30_Time, file="./200_t/Random_Hetero_30_Time.RData")
+save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.1.RData")
+save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.1.RData")
 
 # load("./200_t/Facebook_Hetero_60.3.RData")
 # load("./200_t/Facebook_Hetero_60_Time.3.RData")
