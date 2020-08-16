@@ -100,9 +100,9 @@ while(1)
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.25) #Set infection size
 			{
-				if(length(unlist(perm_active))<=length(V(graph))*0.4){
+				if(length(unlist(perm_active))<=length(V(graph))*0.35){
 				Facebook_Hetero_30[[length(Facebook_Hetero_30)+1]]=unlist(perm_active)
 				Facebook_Hetero_30_Time[[length(Facebook_Hetero_30_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
