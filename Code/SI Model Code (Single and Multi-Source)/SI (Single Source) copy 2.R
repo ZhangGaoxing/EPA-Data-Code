@@ -115,16 +115,16 @@ while(1)
 }
 }
 
-save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.2.RData")
-save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.2.RData")
+save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.3.RData")
+save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.3.RData")
 
-# load("./200_t/Facebook_Hetero_60.3.RData")
-# load("./200_t/Facebook_Hetero_60_Time.3.RData")
-# f3 <- Facebook_Hetero_60
-# t3 <- Facebook_Hetero_60_Time
+# load("./200_t/Facebook_Hetero_30.4.RData")
+# load("./200_t/Facebook_Hetero_30_Time.4.RData")
+# f4 <- Facebook_Hetero_30
+# t4 <- Facebook_Hetero_30_Time
 
-# Facebook_Hetero_60 <- c(f1,f2,f3)
-# Facebook_Hetero_60_Time <- c(t1,t2,t3)
+# Facebook_Hetero_30 <- c(f1,f2,f3,f4)
+# Facebook_Hetero_30_Time <- c(t1,t2,t3,t4)
 
-# save(Facebook_Hetero_60, file="./200_t/Facebook_Hetero_60.RData")
-# save(Facebook_Hetero_60_Time, file="./200_t/Facebook_Hetero_60_Time.RData")
+# save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.RData")
+# save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.RData")
