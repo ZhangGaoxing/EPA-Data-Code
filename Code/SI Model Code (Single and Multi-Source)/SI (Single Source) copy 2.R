@@ -82,7 +82,7 @@ while(1)
 				i=i+1
 			}
 			prob=1-prob
-			#print(prob)
+			print(prob)
 		}
 		else
 		{
@@ -115,8 +115,8 @@ while(1)
 }
 }
 
-save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.3.RData")
-save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.3.RData")
+save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.13.RData")
+save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.13.RData")
 
 # load("./200_t/Facebook_Hetero_30.4.RData")
 # load("./200_t/Facebook_Hetero_30_Time.4.RData")

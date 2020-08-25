@@ -61,7 +61,7 @@ while(1)
 			if(are.connected(graph,(inactive),(active)))
 			{
 				count=count+1
-				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0.1, max=0.35)
+				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0, max=1)
 
 				#print(unlist(edge_list))
 				#print(active)
@@ -80,22 +80,24 @@ while(1)
 				i=i+1
 			}
 			prob=1-prob
-			#print(prob)
+			
 		}
 		else
 		{
 
 			prob=unlist(edge_list)
 		}
-
+print(prob)
 		ttt=ttt+1
 		if(prob>runif(n=1, min=0, max=1))
 		{
 			time[length(unlist(perm_active))+1]=as.numeric(paste(tt,ttt,sep="."))
 			perm_active[length(unlist(perm_active))+1]=(inactive)
 			
-			#print(unlist(perm_active))				
-			#print(prob)
+			if(length(unlist(perm_active))>=length(V(graph))*0.3)
+			{
+				break
+			}
 		}
 	}
 	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
@@ -119,8 +121,8 @@ while(1)
 }
 }
 
-save(Yeast_Hetero_30, file="./200_t/Yeast_Hetero_30.RData")
-save(Yeast_Hetero_30_Time, file="./200_t/Yeast_Hetero_30_Time.RData")
+save(Yeast_Hetero_30, file="./200_t/Yeast_Hetero_30.4.RData")
+save(Yeast_Hetero_30_Time, file="./200_t/Yeast_Hetero_30_Time.4.RData")
 
 # r <- Yeast_Hetero_30
 # t <- Yeast_Hetero_30_Time

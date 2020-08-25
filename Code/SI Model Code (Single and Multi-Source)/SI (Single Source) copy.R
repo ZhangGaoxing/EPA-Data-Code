@@ -2,17 +2,17 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Facebook.RData")
+load(file="./Graphs/Karate.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Facebook_Hetero_30=list() #Replace Facebook_Hetero_2 depending on graph and infection size
-Facebook_Hetero_30_Time=list()
+Karate_Hetero_90=list() #Replace Karate_Hetero_2 depending on graph and infection size
+Karate_Hetero_90_Time=list()
 
 k=1
-while(k<=50){ #Generate 100 infection graphs
+while(k<=200){ #Generate 100 infection graphs
 	print(k)
-random=as.numeric(c((sample(V(graph))[1]))) #Facebookly pick one source
+random=as.numeric(c((sample(V(graph))[1]))) #Karately pick one source
 
 t=0
 neighbors=list()
@@ -95,19 +95,14 @@ while(1)
 		{
 			time[length(unlist(perm_active))+1]=as.numeric(paste(tt,ttt,sep="."))
 			perm_active[length(unlist(perm_active))+1]=(inactive)
-			
-			if(length(unlist(perm_active))>=length(V(graph))*0.3)
-			{
-				break
-			}
 			#print(unlist(perm_active))				
 			#print(prob)
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.9) #Set infection size
 	{
-			Facebook_Hetero_30[[length(Facebook_Hetero_30)+1]]=unlist(perm_active)
-				Facebook_Hetero_30_Time[[length(Facebook_Hetero_30_Time)+1]]=unlist(time)
+			Karate_Hetero_90[[length(Karate_Hetero_90)+1]]=unlist(perm_active)
+				Karate_Hetero_90_Time[[length(Karate_Hetero_90_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -115,16 +110,16 @@ while(1)
 }
 }
 
-save(Facebook_Hetero_30, file="./200_t/Facebook_Hetero_30.4.RData")
-save(Facebook_Hetero_30_Time, file="./200_t/Facebook_Hetero_30_Time.4.RData")
+save(Karate_Hetero_90, file="./200_t/Karate_Hetero_90.RData")
+save(Karate_Hetero_90_Time, file="./200_t/Karate_Hetero_90_Time.RData")
 
-# load("./200_t/Facebook_Hetero_60.3.RData")
-# load("./200_t/Facebook_Hetero_60_Time.3.RData")
-# f3 <- Facebook_Hetero_60
-# t3 <- Facebook_Hetero_60_Time
+# load("./200_t/Karate_Hetero_60.3.RData")
+# load("./200_t/Karate_Hetero_60_Time.3.RData")
+# f3 <- Karate_Hetero_60
+# t3 <- Karate_Hetero_60_Time
 
-# Facebook_Hetero_60 <- c(f1,f2,f3)
-# Facebook_Hetero_60_Time <- c(t1,t2,t3)
+# Karate_Hetero_60 <- c(f1,f2,f3)
+# Karate_Hetero_60_Time <- c(t1,t2,t3)
 
-# save(Facebook_Hetero_60, file="./200_t/Facebook_Hetero_60.RData")
-# save(Facebook_Hetero_60_Time, file="./200_t/Facebook_Hetero_60_Time.RData")
+# save(Karate_Hetero_60, file="./200_t/Karate_Hetero_60.RData")
+# save(Karate_Hetero_60_Time, file="./200_t/Karate_Hetero_60_Time.RData")
