@@ -11,7 +11,7 @@ Yeast_Hetero_30=list() #Replace Yeast_Hetero_2 depending on graph and infection 
 Yeast_Hetero_30_Time=list()
 
 k=1
-while(k<=200){ #Generate 100 infection graphs
+while(k<=7){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -121,8 +121,8 @@ print(prob)
 }
 }
 
-save(Yeast_Hetero_30, file="./200_t/Yeast_Hetero_30.4.RData")
-save(Yeast_Hetero_30_Time, file="./200_t/Yeast_Hetero_30_Time.4.RData")
+save(Yeast_Hetero_30, file="./200_t/Yeast_Hetero_30.12.RData")
+save(Yeast_Hetero_30_Time, file="./200_t/Yeast_Hetero_30_Time.12.RData")
 
 # r <- Yeast_Hetero_30
 # t <- Yeast_Hetero_30_Time
