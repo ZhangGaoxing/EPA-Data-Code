@@ -3,15 +3,15 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Yeast.RData")
+load(file="./Graphs/RFID.RData")
 
 #Code to simulate infection over a graph using SI model.
 
-Yeast_Hetero_30=list() #Replace Yeast_Hetero_2 depending on graph and infection size
-Yeast_Hetero_30_Time=list()
+RFID_Hetero_90=list() #Replace RFID_Hetero_2 depending on graph and infection size
+RFID_Hetero_90_Time=list()
 
 k=1
-while(k<=7){ #Generate 100 infection graphs
+while(k<=200){ #Generate 100 infection graphs
 	print(k)
 random=as.numeric(c((sample(V(graph))[1]))) #Randomly pick one source
 
@@ -87,24 +87,24 @@ while(1)
 
 			prob=unlist(edge_list)
 		}
-print(prob)
+#print(prob)
 		ttt=ttt+1
 		if(prob>runif(n=1, min=0, max=1))
 		{
 			time[length(unlist(perm_active))+1]=as.numeric(paste(tt,ttt,sep="."))
 			perm_active[length(unlist(perm_active))+1]=(inactive)
 			
-			if(length(unlist(perm_active))>=length(V(graph))*0.3)
+			if(length(unlist(perm_active))>=length(V(graph))*0.9)
 			{
 				break
 			}
 		}
 	}
-	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
+	if(length(unlist(perm_active))>=length(V(graph))*0.85) #Set infection size
 			{
-				if(length(unlist(perm_active))<=length(V(graph))*0.4){
-				Yeast_Hetero_30[[length(Yeast_Hetero_30)+1]]=unlist(perm_active)
-				Yeast_Hetero_30_Time[[length(Yeast_Hetero_30_Time)+1]]=unlist(time)
+				if(length(unlist(perm_active))<=length(V(graph))*0.95){
+				RFID_Hetero_90[[length(RFID_Hetero_90)+1]]=unlist(perm_active)
+				RFID_Hetero_90_Time[[length(RFID_Hetero_90_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -121,16 +121,19 @@ print(prob)
 }
 }
 
-save(Yeast_Hetero_30, file="./200_t/Yeast_Hetero_30.12.RData")
-save(Yeast_Hetero_30_Time, file="./200_t/Yeast_Hetero_30_Time.12.RData")
+save(RFID_Hetero_90, file="./200_t/RFID_Hetero_90.RData")
+save(RFID_Hetero_90_Time, file="./200_t/RFID_Hetero_90_Time.RData")
 
-# r <- Yeast_Hetero_30
-# t <- Yeast_Hetero_30_Time
+# r <- RFID_Hetero_90
+# t <- RFID_Hetero_90_Time
 
-# load("./200_t/Yeast_Hetero_30.RData")
-# load("./200_t/Yeast_Hetero_30_Time.RData")
+# load("./200_t/RFID_Hetero_90.RData")
+# load("./200_t/RFID_Hetero_90_Time.RData")
 
-# Yeast_Hetero_30 <- c(Yeast_Hetero_30, r)
-# Yeast_Hetero_30_Time <- c(Yeast_Hetero_30_Time, t)
+# RFID_Hetero_90 <- c(RFID_Hetero_90, r)
+# RFID_Hetero_90_Time <- c(RFID_Hetero_90_Time, t)
 
-# length(Yeast_Hetero_30)
+# length(RFID_Hetero_90)
+
+# RFID_Hetero_90 <- RFID_Hetero_90[1:200]
+# RFID_Hetero_90_Time <- RFID_Hetero_90_Time[1:200]

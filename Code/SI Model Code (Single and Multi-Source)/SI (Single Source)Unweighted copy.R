@@ -3,13 +3,12 @@ library(igraph)
 
 #Load the desired graph over which the infection is to be generated
 #Set the working directory
-load(file="./Graphs/Immuno.RData")
-# graph <- UKfaculty
-# save(graph, file = "./Graphs/UKfaculty.RData")
+load(file="./Graphs/USairports.RData")
+
 #Code to simulate infection over a graph using SI model.
 
-UKfaculty_Hetero_30=list() #Replace UKfaculty_Hetero_2 depending on graph and infection size
-UKfaculty_Hetero_30_Time=list()
+USairports_Hetero_30=list() #Replace RFID_Hetero_2 depending on graph and infection size
+USairports_Hetero_30_Time=list()
 
 k=1
 while(k<=200){ #Generate 100 infection graphs
@@ -62,7 +61,7 @@ while(1)
 			if(are.connected(graph,(inactive),(active)))
 			{
 				count=count+1
-				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0, max=0.35)
+				edge_list[length(unlist(edge_list))+1]=runif(n=1, min=0, max=1)
 
 				#print(unlist(edge_list))
 				#print(active)
@@ -81,29 +80,31 @@ while(1)
 				i=i+1
 			}
 			prob=1-prob
-			#print(prob)
+			
 		}
 		else
 		{
 
 			prob=unlist(edge_list)
 		}
-
+#print(prob)
 		ttt=ttt+1
 		if(prob>runif(n=1, min=0, max=1))
 		{
 			time[length(unlist(perm_active))+1]=as.numeric(paste(tt,ttt,sep="."))
 			perm_active[length(unlist(perm_active))+1]=(inactive)
 			
-			#print(unlist(perm_active))				
-			#print(prob)
+			if(length(unlist(perm_active))>=length(V(graph))*0.3)
+			{
+				break
+			}
 		}
 	}
 	if(length(unlist(perm_active))>=length(V(graph))*0.3) #Set infection size
 			{
 				if(length(unlist(perm_active))<=length(V(graph))*0.4){
-				UKfaculty_Hetero_30[[length(UKfaculty_Hetero_30)+1]]=unlist(perm_active)
-				UKfaculty_Hetero_30_Time[[length(UKfaculty_Hetero_30_Time)+1]]=unlist(time)
+				USairports_Hetero_30[[length(USairports_Hetero_30)+1]]=unlist(perm_active)
+				USairports_Hetero_30_Time[[length(USairports_Hetero_30_Time)+1]]=unlist(time)
 				print(unlist(perm_active))	
 				k=k+1
 				break
@@ -120,16 +121,19 @@ while(1)
 }
 }
 
-save(UKfaculty_Hetero_30, file="./200_t/UKfaculty_Hetero_30.RData")
-save(UKfaculty_Hetero_30_Time, file="./200_t/UKfaculty_Hetero_30_Time.RData")
+save(USairports_Hetero_30, file="./200_t/USairports_Hetero_30.1.RData")
+save(USairports_Hetero_30_Time, file="./200_t/USairports_Hetero_30_Time.1.RData")
 
-# r <- UKfaculty_Hetero_30
-# t <- UKfaculty_Hetero_30_Time
+# r <- USairports_Hetero_30
+# t <- USairports_Hetero_30_Time
 
-# load("./200_t/UKfaculty_Hetero_30.RData")
-# load("./200_t/UKfaculty_Hetero_30_Time.RData")
+# load("./200_t/USairports_Hetero_30.RData")
+# load("./200_t/USairports_Hetero_30_Time.RData")
 
-# UKfaculty_Hetero_30 <- c(UKfaculty_Hetero_30, r)
-# UKfaculty_Hetero_30_Time <- c(UKfaculty_Hetero_30_Time, t)
+# USairports_Hetero_30 <- c(USairports_Hetero_30, r)
+# USairports_Hetero_30_Time <- c(USairports_Hetero_30_Time, t)
 
-# length(UKfaculty_Hetero_30)
+# length(USairports_Hetero_30)
+
+# USairports_Hetero_30 <- USairports_Hetero_30[1:200]
+# USairports_Hetero_30_Time <- USairports_Hetero_30_Time[1:200]
