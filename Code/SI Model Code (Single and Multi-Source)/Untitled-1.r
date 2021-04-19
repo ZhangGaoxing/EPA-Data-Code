@@ -27,6 +27,7 @@ graph <- simplify(graph, remove.multiple = TRUE, remove.loops = TRUE)
 V(graph)$name
 graph <- set.vertex.attribute(graph, "name", value=as.character(V(graph)))
 
-save(graph, file = "UKfaculty.RData")
+E(graph)$weight <- runif(n=length(E(graph)), min=0, max=1)
+max(E(graph)$weight)
 
-E(graph)$weights
+save(graph, file = "UKfaculty.RData")
